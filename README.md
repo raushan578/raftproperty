@@ -26,8 +26,7 @@ cd RaftProperty
 Make sure you have node, npm or yarn, and expo-cli installed.
 
 npm install
-
-# or
+or
 yarn install
 3. Start the Development Server
 
