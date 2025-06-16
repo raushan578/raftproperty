@@ -12,6 +12,7 @@ import { FontAwesome } from "@expo/vector-icons";
 import LottieView from "lottie-react-native";
 import ButtonComponent from "@/components/custom/ButtonComponent";
 import { useSafeAreaInsets } from "react-native-safe-area-context";
+import { router } from "expo-router";
 
 const SCREEN_WIDTH = Dimensions.get("window").width;
 
@@ -22,14 +23,16 @@ interface Props {
 const BookNowButton: React.FC<Props> = ({ onPress }) => {
   const [visible, setVisible] = useState(false);
   const [loading, setLoading] = useState(false);
-  const insets = useSafeAreaInsets();
-
   const handlePress = () => {
     setLoading(true);
     try {
       onPress?.();
       setVisible(true);
-      setTimeout(() => setVisible(false), 2500);
+      setTimeout(() => {
+        setVisible(false)
+      router.replace("/(tabs)/two");
+      }, 2500);
+      
     } catch (err) {
       console.error("Booking failed", err);
     } finally {
@@ -39,30 +42,29 @@ const BookNowButton: React.FC<Props> = ({ onPress }) => {
 
   return (
     <>
-        <TouchableOpacity
-          onPressIn={handlePress}
-          style={[styles.button, loading && { backgroundColor: "#aaa" }]}
-          disabled={loading}
-        >
-          {loading ? (
-            <ActivityIndicator color="#fff" />
-          ) : (
-            <View style={styles.row}>
-              <FontAwesome
-                name="calendar-check-o"
-                size={20}
-                color="#fff"
-                style={styles.icon}
-              />
-              <Text style={styles.text}>Book Now</Text>
-            </View>
-          )}
-        </TouchableOpacity>
+      <TouchableOpacity
+        onPressIn={handlePress}
+        style={[styles.button, loading && { backgroundColor: "#aaa" }]}
+        disabled={loading}
+      >
+        {loading ? (
+          <ActivityIndicator color="#fff" />
+        ) : (
+          <View style={styles.row}>
+            <FontAwesome
+              name="calendar-check-o"
+              size={20}
+              color="#fff"
+              style={styles.icon}
+            />
+            <Text style={styles.text}>Book Now</Text>
+          </View>
+        )}
+      </TouchableOpacity>
       <Modal
         visible={visible}
         transparent
         animationType="fade"
-
         onRequestClose={() => setVisible(false)}
       >
         <View style={styles.modalContainer}>
@@ -88,9 +90,8 @@ const BookNowButton: React.FC<Props> = ({ onPress }) => {
 export default BookNowButton;
 
 const styles = StyleSheet.create({
-
   button: {
-      position: "absolute",
+    position: "absolute",
     alignItems: "center",
     alignSelf: "center",
     zIndex: 999,
@@ -106,7 +107,7 @@ const styles = StyleSheet.create({
     shadowOpacity: 0.2,
     shadowRadius: 5,
     width: SCREEN_WIDTH - 40,
-    bottom:80
+    bottom: 80,
   },
   row: {
     flexDirection: "row",

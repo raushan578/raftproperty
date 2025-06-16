@@ -15,8 +15,8 @@ const { width } = Dimensions.get("window");
 
 const MapLayout: React.FC<MapLayoutProps> = ({ coordinates }) => {
   const region = {
-    latitude: coordinates.lat,
-    longitude: coordinates.lng,
+    latitude: coordinates?.lat,
+    longitude: coordinates?.lng,
     latitudeDelta: 0.01,
     longitudeDelta: 0.01,
   };
@@ -31,7 +31,7 @@ const MapLayout: React.FC<MapLayoutProps> = ({ coordinates }) => {
         scrollEnabled={false}
         zoomEnabled={false}
       >
-        <Marker coordinate={{ latitude: coordinates.lat, longitude: coordinates.lng }} />
+        <Marker coordinate={{ latitude: coordinates?.lat, longitude: coordinates?.lng }} />
       </MapView>
     </View>
   );

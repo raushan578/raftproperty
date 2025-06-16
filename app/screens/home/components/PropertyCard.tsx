@@ -33,6 +33,7 @@ const PropertyCard: React.FC<PropertyCardProps> = ({
     router.push({
       pathname: "/screens/propertyScreen",
       params: { id, title },
+      
     });
 
     setTimeout(() => {

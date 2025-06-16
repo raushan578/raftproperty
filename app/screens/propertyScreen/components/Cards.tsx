@@ -40,7 +40,7 @@ const Cards: React.FC<Props> = ({ property }) => {
     <View style={styles.card}>
       <FlatList
         ref={flatListRef}
-        data={property.images}
+        data={property?.images}
         horizontal
         pagingEnabled
         showsHorizontalScrollIndicator={false}
@@ -68,7 +68,7 @@ const Cards: React.FC<Props> = ({ property }) => {
       </View>
 
       <View style={styles.tagsContainer}>
-        {property.tags.map((tag, index) => (
+        {property?.tags.map((tag, index) => (
           <View key={index} style={styles.tag}>
             <Text style={styles.tagText}>{tag}</Text>
           </View>
@@ -76,18 +76,18 @@ const Cards: React.FC<Props> = ({ property }) => {
       </View>
 
       <View style={styles.textContainer}>
-        <Text style={styles.title}>{property.title}</Text>
-        <Text style={styles.subtitle}>{property.location}</Text>
+        <Text style={styles.title}>{property?.title}</Text>
+        <Text style={styles.subtitle}>{property?.location}</Text>
         <Text
           style={[
             styles.title,
             { fontWeight: "700", marginTop: 8, color: "#555" },
           ]}
         >
-          {property.price}
+          {property?.price}
         </Text>
       </View>
-      <DescriptionSection description={property.description || ""} />
+      <DescriptionSection description={property?.description || ""} />
     </View>
   );
 };

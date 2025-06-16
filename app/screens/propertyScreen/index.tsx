@@ -11,7 +11,7 @@ import Cards from "./components/Cards";
 import PropertyInfo from "./components/PropertyInfo";
 import ContactCard from "./components/ContactCard";
 import MapLayout from "./components/MapLayout";
-import { useLocalSearchParams } from "expo-router";
+import { Stack, useLocalSearchParams } from "expo-router";
 import { usePropertyById } from "./hooks/usePropertyDetail";
 import { PropertyDetails } from "@/types/interface/DetailedProperty.interface";
 import BookNowButton from "./components/BookNow";
@@ -44,15 +44,20 @@ const PropertyScreen: React.FC = () => {
 
   return (
     <>
+      <Stack.Screen options={{ headerTitle: "" }} />
+
       <ScrollView
         contentContainerStyle={styles.container}
         showsVerticalScrollIndicator={false}
       >
         <Text style={styles.header}>Property Details</Text>
         <Cards property={propertyCardData} />
-        <PropertyInfo details={propertyCardData} />
-        <MapLayout coordinates={propertyCardData.coordinates} />
-        <ContactCard contact={propertyCardData.contact} />
+               {propertyCardData?.coordinates && (
+          <MapLayout coordinates={propertyCardData?.coordinates} />
+        )}
+        {propertyCardData?.contact && (
+          <ContactCard contact={propertyCardData?.contact} />
+        )}
 
       </ScrollView>
       <BookNowButton onPress={() => addBookingId(id)} />

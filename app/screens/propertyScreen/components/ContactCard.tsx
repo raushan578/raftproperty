@@ -12,8 +12,8 @@ export interface ContactDetails {
 
 // Component
 const ContactCard: React.FC<{ contact: ContactDetails }> = ({ contact }) => {
-  const handleCall = () => Linking.openURL(`tel:${contact.phone}`);
-  const handleEmail = () => Linking.openURL(`mailto:${contact.email}`);
+  const handleCall = () => Linking.openURL(`tel:${contact?.phone}`);
+  const handleEmail = () => Linking.openURL(`mailto:${contact?.email}`);
 
   return (
     <View style={styles.container}>
@@ -31,12 +31,12 @@ const ContactCard: React.FC<{ contact: ContactDetails }> = ({ contact }) => {
 
       <TouchableOpacity onPress={handleCall} style={styles.infoRow}>
         <Feather name="phone-call" size={20} color="#007BFF" />
-        <Text style={[styles.infoText, styles.link]}>{contact.phone}</Text>
+        <Text style={[styles.infoText, styles.link]}>{contact?.phone}</Text>
       </TouchableOpacity>
 
       <TouchableOpacity onPress={handleEmail} style={styles.infoRow}>
         <Feather name="mail" size={20} color="#007BFF" />
-        <Text style={[styles.infoText, styles.link]}>{contact.email}</Text>
+        <Text style={[styles.infoText, styles.link]}>{contact?.email}</Text>
       </TouchableOpacity>
     </View>
   );
