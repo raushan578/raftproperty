@@ -1,3 +1,5 @@
+(Note : this repo maintained by two git ids both are owned by me)
+
 🏡 RaftProperty
 A cross-platform React Native (Expo) project built to explore property listing features using modern state management. This project uses Jotai for state handling and is preloaded with dummy data for a seamless experience during development and testing.
 
