@@ -22,6 +22,7 @@ const PropertyScreen: React.FC = () => {
   const propertyCardData: PropertyDetails | undefined = usePropertyById(
     id ?? ""
   );
+  const { addBookingId } = useUserActions();
 
   if (!id) {
     return (
@@ -40,8 +41,6 @@ const PropertyScreen: React.FC = () => {
     );
   }
 
-  const {addBookingId} = useUserActions();
-
   return (
     <>
       <Stack.Screen options={{ headerTitle: "" }} />
@@ -51,14 +50,17 @@ const PropertyScreen: React.FC = () => {
         showsVerticalScrollIndicator={false}
       >
         <Text style={styles.header}>Property Details</Text>
-        <Cards property={propertyCardData} />
-               {propertyCardData?.coordinates && (
+        {/* <Cards property={propertyCardData} /> */}
+        {propertyCardData?.features && (
+          <PropertyInfo details={propertyCardData} />
+        )}
+
+        {propertyCardData?.coordinates && (
           <MapLayout coordinates={propertyCardData?.coordinates} />
         )}
         {propertyCardData?.contact && (
           <ContactCard contact={propertyCardData?.contact} />
         )}
-
       </ScrollView>
       <BookNowButton onPress={() => addBookingId(id)} />
     </>

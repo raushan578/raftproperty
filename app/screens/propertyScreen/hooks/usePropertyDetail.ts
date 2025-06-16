@@ -4,5 +4,5 @@ import { useAtom } from "jotai";
 
 export const usePropertyById = (id: string): PropertyDetails | undefined => {
   const [properties] = useAtom(propertiedDetailsAtom);
-  return properties.find((property) => property.id === id);
+  return properties.find((property) => property?.id === id);
 };

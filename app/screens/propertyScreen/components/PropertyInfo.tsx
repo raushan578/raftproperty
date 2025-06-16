@@ -28,8 +28,8 @@ const { width } = Dimensions.get("window");
 const PropertyInfo: React.FC<{ details: PropertyDetails }> = ({ details }) => {
   const renderFeature = ({ item }: { item: Feature }) => (
     <View style={styles.featureItem}>
-      <MaterialCommunityIcons name={item.icon} size={20} color="#333" />
-      <Text style={styles.featureText}>{item.label}</Text>
+      <MaterialCommunityIcons name={item?.icon} size={20} color="#333" />
+      <Text style={styles.featureText}>{item?.label}</Text>
     </View>
   );
 
@@ -38,14 +38,14 @@ const PropertyInfo: React.FC<{ details: PropertyDetails }> = ({ details }) => {
       <Text style={styles.sectionTitle}>Amenities</Text>
 
       <View style={styles.featuresGrid}>
-        {details.features.map((feature, index) => (
+        {details?.features.map((feature, index) => (
           <View key={index} style={styles.featureItem}>
             <MaterialCommunityIcons
-              name={feature.icon}
+              name={feature?.icon}
               size={20}
               color="#333"
             />
-            <Text style={styles.featureText}>{feature.label}</Text>
+            <Text style={styles.featureText}>{feature?.label}</Text>
           </View>
         ))}
       </View>
