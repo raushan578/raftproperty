@@ -1,4 +1,8 @@
+# 🏡 RAFT Property
+
 (Note : this repo maintained by two git ids both are owned by me)
+
+Video Walkthrough : https://drive.google.com/file/d/1Zn_S81jm7oOpVR9ZH4QWeCsZ91Gza2Y0/view?usp=drive_link 
 
 🏡 RaftProperty
 A cross-platform React Native (Expo) project built to explore property listing features using modern state management. This project uses Jotai for state handling and is preloaded with dummy data for a seamless experience during development and testing.
@@ -24,8 +28,7 @@ cd RaftProperty
 Make sure you have node, npm or yarn, and expo-cli installed.
 
 npm install
-
-# or
+or
 yarn install
 3. Start the Development Server
 
