@@ -50,7 +50,7 @@ const PropertyScreen: React.FC = () => {
         showsVerticalScrollIndicator={false}
       >
         <Text style={styles.header}>Property Details</Text>
-        <Cards property={propertyCardData} />
+        {/* <Cards property={propertyCardData} /> */}
         {propertyCardData?.features && (
           <PropertyInfo details={propertyCardData} />
         )}
